@@ -1,4 +1,7 @@
 {
+  "tasks": {
+    "vitest": "vitest"
+  },
   "compilerOptions": {
     "lib": ["deno.window"],
     "strict": true

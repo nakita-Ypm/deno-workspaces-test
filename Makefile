@@ -5,3 +5,6 @@ deps:
 	rm -rf deno.lock
 	rm -rf node_modules
 	deno install
+
+test:
+	deno task test
