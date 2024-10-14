@@ -1,55 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { Karabiner } from './index.ts'
-
-const input = [
-  {
-    lan: 'ja',
-    fromKey: 'right_command',
-    toKey: 'japanese_eisuu',
-    opt: ['any'],
-  },
-  {
-    lan: 'en',
-    fromKey: 'right_command',
-    toKey: 'japanese_kana',
-    opt: ['any'],
-  },
-]
-
-const expected = input.map((item) => ({
-  type: 'basic',
-  conditions: [
-    {
-      input_sources: [
-        {
-          language: item.lan,
-        },
-      ],
-      type: 'input_source_if',
-    },
-  ],
-  from: {
-    key_code: item.fromKey,
-    modifiers: {
-      optional: item.opt,
-    },
-  },
-  to: [
-    {
-      key_code: item.toKey,
-    },
-  ],
-}))
-
-const testCases = input.map((i, o) => {
-  return {
-    input: i,
-    expected: expected[o],
-  }
-})
+import {
+  toggle_test_cases,
+  generate_mandatory_keymap_testcase,
+} from './data.ts'
 
 describe('Karabiner test', () => {
-  it.concurrent.each(testCases)(
+  it.concurrent.each(toggle_test_cases)(
     'toggle($input.lan, $input.fromKey, $input.toKey, $input.opt) -> $expected',
     ({ input, expected }) => {
       const { lan, fromKey, toKey, opt } = input
@@ -57,4 +14,12 @@ describe('Karabiner test', () => {
       expect(result).toEqual(expected)
     },
   )
+
+  it.concurrent.each(generate_mandatory_keymap_testcase)('generateMandatoryKeymap', ({ input, expected }) => {
+    const from_layout = input.layout
+    const to_layout = input.qwerty
+    const mandatory_keys = input.mandatory
+    const result = Karabiner.generateMandatoryKeymap(from_layout, to_layout, mandatory_keys)
+    expect(result).toEqual(expected)
+  })
 })

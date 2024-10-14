@@ -29,13 +29,13 @@ const expected: string[] = [
     "91", "92", "Fizz", "94", "Buzz", "Fizz", "97", "98", "Fizz", "Buzz"
 ]
 
-const testCases = input.map((i, o) => {
+const test_case = input.map((i, o) => {
   return { input: i, expected: expected[o] }
 })
 
 describe('fizzBuzz test', () => {
   // fizzBuzz
-  it.concurrent.each(testCases)('fizzBuzz($input) -> $expected', ({ input, expected }) => {
+  it.concurrent.each(test_case)('fizzBuzz($input) -> $expected', ({ input, expected }) => {
     const result = fizzBuzz(input)
     expect(result).toEqual(expected)
   })
