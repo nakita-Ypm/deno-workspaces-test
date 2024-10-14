@@ -1,0 +1,19 @@
+{
+  "lint": {
+    "include": ["src/"],
+    "exclude": ["src/testdata/", "src/fixtures/**/*.ts"],
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo", "no-unused-vars"],
+      "exclude": []
+    }
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "singleQuote": true,
+    "semiColons": false,
+    "include": ["./"]
+  }
+}
