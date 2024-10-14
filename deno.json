@@ -9,7 +9,7 @@
     "rules": {
       "tags": ["recommended"],
       "include": ["ban-untagged-todo", "no-unused-vars"],
-      "exclude": []
+      "exclude": ["node_modules"]
     }
   },
   "fmt": {
@@ -18,7 +18,8 @@
     "indentWidth": 2,
     "singleQuote": true,
     "semiColons": false,
-    "include": ["./"]
+    "include": ["./"],
+    "exclude": ["node_modules"]
   },
   "workspace": {
     "members": [
