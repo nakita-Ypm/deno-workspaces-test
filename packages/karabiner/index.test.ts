@@ -1,9 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Karabiner } from './index.ts'
-import {
-  toggle_test_cases,
-  generate_mandatory_keymap_testcase,
-} from './data.ts'
+import { generate_mandatory_keymap_testcase, toggle_test_cases } from './data.ts'
 
 describe('Karabiner test', () => {
   it.concurrent.each(toggle_test_cases)(
