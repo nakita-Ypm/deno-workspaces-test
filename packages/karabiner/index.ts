@@ -1,11 +1,11 @@
 export class Karabiner {
-  static karabinerDescription(title: string, description: string, result: string[]) {
+  static karabinerDescription(title: string, description: string, manipulators: string) {
     return {
       title: title,
       rules: [
         {
-          description: description,
-          manipulators: result,
+          description,
+          manipulators,
         },
       ],
     }

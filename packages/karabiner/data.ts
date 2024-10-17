@@ -1,3 +1,29 @@
+// karabinerDescription
+const karabiner_description_input = [
+  { title: 'Programmer Dvorak Qwerty', description: 'Programmer Dvorak Qwerty ShortCut', manipulators: 'manipulators' },
+  { title: 'Astarte Qwerty', description: 'Astarte Qwerty ShortCut', manipulators: 'manipulators' },
+  { title: 'Eucalyn Qwerty', description: 'Eucalyn Qwerty ShortCut', manipulators: 'manipulators' },
+  { title: 'Eucalyn_kai Qwerty', description: 'Eucalyn_kai Qwerty ShortCut', manipulators: 'manipulators' },
+  { title: 'Onishi Qwerty', description: 'Onishi Qwerty ShortCut', manipulators: 'manipulators' },
+]
+
+const karabiner_description_expected = karabiner_description_input.map((item) => ({
+  title: item.title,
+  rules: [
+    {
+      description: item.description,
+      manipulators: item.manipulators,
+    },
+  ],
+}))
+
+export const karabiner_description_test_case = karabiner_description_input.map((i, o) => {
+  return {
+    input: i,
+    expected: karabiner_description_expected[o],
+  }
+})
+
 // toggle
 const toggl_input = [
   {
